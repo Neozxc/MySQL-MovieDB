@@ -1,7 +1,7 @@
-const sequalize = require("sequelize");
+const sequelize = require("sequelize");
 const { DataTypes } = require("sequelize");
 
-const Film = sequalize.define("Netflix", {
+const Film = sequelize.define("Test", {
     name: {
         type: DataTypes.STRING,
         allowNull: false
