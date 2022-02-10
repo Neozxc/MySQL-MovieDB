@@ -21,4 +21,4 @@ let runSequalize = async () => {
 
 runSequalize();
 
-// module.exports = sequalize;
+module.exports = sequalize;
