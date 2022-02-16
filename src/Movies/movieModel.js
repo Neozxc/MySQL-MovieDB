@@ -1,7 +1,7 @@
-const sequelize = require("sequelize");
+const sequelize = require("../db/connection");
 const { DataTypes } = require("sequelize");
 
-const Film = sequelize.define("Test", {
+const Film = sequelize.define("MovieDBs", {
     name: {
         type: DataTypes.STRING,
         allowNull: false

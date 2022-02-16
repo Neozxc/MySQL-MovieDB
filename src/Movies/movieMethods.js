@@ -1,6 +1,6 @@
 const Film = require("./movieModel");
 const yargs = require("yargs");
-const { hideBin } = require("yargs");
+const { hideBin } = require("yargs/helpers");
 const argv = yargs(hideBin(process.argv)).argv;
 
 
@@ -29,8 +29,11 @@ exports.list = async () => {
 // Update
 exports.updateDB = async () => {
     try {
-        const updateMovies = await Film.update({ name: "Spiderman" });
-        console.log(updateMovies);
+        if (argv.newname) {
+            await Film.update({ name: argv.newname }, { where: { id: 2 } });
+        } else if (argv.newactor) {
+            await Film.update({ actor: argv.newactor }, { where: { id: 2 } });
+        }
     } catch (error) {
         console.log(error);
     }
@@ -39,8 +42,10 @@ exports.updateDB = async () => {
 // Delete
 exports.deleteDB = async () => {
     try {
-        const deleteMovies = await Film.destroy();
-        console.log(deleteMovies);
+        if (argv.name) {
+            const deleteMovies = await Film.destroy({ where: { name: argv.name } });  
+            console.log(deleteMovies);
+        }
     } catch (error) {
         console.log(error);
     }
